@@ -1,0 +1,139 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+}
+
+header {
+    background-color: #0056b3;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+main {
+    max-width: 900px;
+    margin: auto;
+}
+
+section {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+h2 {
+    color: #0056b3;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 10px;
+}
+
+/* Estilos para formularios y botones */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 95%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilo específico para botón deshabilitado (Escenario 3) */
+button:disabled {
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+}
+
+/* Estilo para mensajes de error (Escenarios 1 y 5) */
+.mensaje-error {
+    color: #d93025;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Estilos para el Flujo de Navegación (Escenario 2) */
+#flujoRecuperacion button {
+    margin-right: 10px;
+}
+button.roto { background-color: #ffc107; color: #333; }
+button.roto:hover { background-color: #e0a800; }
+button.exito { background-color: #28a745; }
+button.exito:hover { background-color: #218838; }
+
+
+/* Estilos para el Menú (Escenario 4) */
+.menu-principal ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    background-color: #333;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.menu-principal li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.menu-principal li a:hover {
+    background-color: #555;
+}
+
+.menu-principal li a.activo {
+    background-color: #0056b3;
+    font-weight: bold;
+}
+
+/* Mejorar el diseño de las opciones */
+.opciones div {
+    margin-bottom: 10px;
+}
+
+.opciones input[type="checkbox"],
+.opciones input[type="radio"] {
+    margin-right: 8px;
+}
+
+/* Feedback visual para elementos seleccionados */
+input[type="checkbox"]:checked + label,
+input[type="radio"]:checked + label {
+    font-weight: bold;
+    color: #0056b3;
+}
+
+/* Estilos para los requisitos de información */
+.info-requisitos {
+    color: #0056b3;
+    font-size: 0.98em;
+    margin-bottom: 10px;
+}

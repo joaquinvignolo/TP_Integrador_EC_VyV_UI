@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trabajo Práctico Integrador - UI & Testing</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+    <header>
+        <h1>Trabajo Práctico Integrador: EC VyV con UI</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>1. El Error Oculto del Campo de Fecha</h2>
+            <p>Un campo de fecha que no valida si el mes es mayor a 12.</p>
+            <form id="formFecha">
+                <label for="fechaNacimiento">Fecha de Nacimiento (DD/MM/AAAA):</label>
+                <input type="text" id="fechaNacimiento" placeholder="Ej: 31/15/2023">
+                <button type="button" onclick="validarFecha()">Validar</button>
+                <p id="errorFecha" class="mensaje-error"></p>
+            </form>
+        </section>
+
+        <section>
+            <h2>2. Navegación Lógica vs. Flujo Roto</h2>
+            <p>Prueba del flujo de "Recuperar contraseña".</p>
+            <div id="flujoRecuperacion">
+                <div id="pantalla1">
+                    <h3>Paso 1: Ingresar Email</h3>
+                    <input type="email" placeholder="tu-email@ejemplo.com">
+                    <button type="button" onclick="irAPantalla('pantalla2')">Siguiente</button>
+                </div>
+                <div id="pantalla2" style="display: none;">
+                    <h3>Paso 2: Ingresar Código de Seguridad</h3>
+                    <input type="text" placeholder="123456">
+                    <button type="button" onclick="irAPantalla('pantalla3')">Verificar</button>
+                    <button type="button" class="roto" onclick="irAPantalla('pantalla1')">Regresar (Flujo Roto)</button>
+                </div>
+                <div id="pantalla3" style="display: none;">
+                    <h3>Paso 3: Nueva Contraseña</h3>
+                    <p class="info-requisitos">
+                        La contraseña debe tener al menos 8 caracteres, incluir una letra mayúscula, una letra minúscula, un número y un carácter especial (por ejemplo: @, #, $).
+                    </p>
+                    <input type="password" placeholder="Tu nueva contraseña">
+                    <button type="button" onclick="irAPantalla('finalizar')">Finalizar</button>
+                    <button type="button" onclick="reiniciarFlujo()" disabled>Reiniciar Proceso</button>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>3. La Regla de Negocio y el Botón Gris</h2>
+            <p>El botón "Confirmar Pedido" debe estar deshabilitado hasta que se elija un producto y una dirección.</p>
+            <div id="procesoCompra">
+                <div class="opciones">
+                    <h4>Paso 1: Selecciona productos</h4>
+                    <div>
+                        <input type="checkbox" id="productoA" name="producto" onchange="verificarCondiciones()">
+                        <label for="productoA">Producto A</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="productoB" name="producto" onchange="verificarCondiciones()">
+                        <label for="productoB">Producto B</label>
+                    </div>
+                </div>
+                <div class="opciones">
+                    <h4>Paso 2: Selecciona dirección de envío</h4>
+                    <div>
+                        <input type="radio" id="dirPrincipal" name="direccion" onchange="verificarCondiciones()">
+                        <label for="dirPrincipal">Dirección Principal</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="dirOficina" name="direccion" onchange="verificarCondiciones()">
+                        <label for="dirOficina">Oficina</label>
+                    </div>
+                </div>
+                <button id="btnConfirmarPedido" disabled>Confirmar Pedido</button>
+            </div>
+        </section>
+
+        <section>
+            <h2>4. Cobertura de la Interfaz con Particiones</h2>
+            <p>Cada elemento del menú es una "partición" que lleva a una sección diferente.</p>
+            <nav class="menu-principal">
+                <ul>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#">Catálogo de Productos</a></li>
+                    <li><a href="#">Mi Carrito</a></li>
+                    <li><a href="#">Mi Cuenta</a></li>
+                    <li><a href="#">Ayuda</a></li>
+                </ul>
+            </nav>
+        </section>
+
+        <section>
+            <h2>5. El Impacto de la Validación en el Cliente</h2>
+            <p>Mostrar un mensaje de error claro cuando la contraseña no cumple los requisitos.</p>
+            <form id="formPassword">
+                <label for="password">Contraseña (debe tener un carácter especial como @, #, $):</label>
+                <input type="password" id="password">
+                <button type="button" onclick="validarPassword()">Registrarse</button>
+                <p id="errorPassword" class="mensaje-error"></p>
+            </form>
+        </section>
+    </main>
+
+    <script src="js/scripts.js"></script>
+</body>
+</html>
