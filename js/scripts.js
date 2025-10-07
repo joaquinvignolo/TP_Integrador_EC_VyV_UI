@@ -265,6 +265,35 @@ function verificarCondiciones() {
     }
 }
 
+function mostrarMensajePedido() {
+    let mensaje = document.getElementById('mensajePedido');
+    if (!mensaje) {
+        mensaje = document.createElement('div');
+        mensaje.id = 'mensajePedido';
+        mensaje.style.cssText = `
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            border-radius: 4px;
+            padding: 15px;
+            margin: 15px 0 0 0;
+            font-weight: bold;
+            text-align: center;
+            animation: fadeIn 0.5s;
+        `;
+        document.getElementById('procesoCompra').appendChild(mensaje);
+    }
+    mensaje.innerHTML = `
+        <strong>¡Pedido confirmado!</strong><br>
+        Gracias por tu compra. Recibirás un email con los detalles del pedido.
+    `;
+}
+
+function limpiarMensajePedido() {
+    const mensaje = document.getElementById('mensajePedido');
+    if (mensaje) mensaje.remove();
+}
+
 // --- LÓGICA PARA EL ESCENARIO 5 ---
 function validarPassword() {
     const password = document.getElementById('password').value;
