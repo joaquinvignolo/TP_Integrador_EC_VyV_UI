@@ -100,31 +100,33 @@ button:disabled {
 }
 
 .menu-principal ul {
-    background: linear-gradient(90deg, #0056b3 60%, #007bff 100%);
-    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    background: #fff;
     box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    list-style-type: none;
     padding: 0;
     margin: 0;
-    display: flex;
-    overflow: hidden;
+    border-radius: 8px;
+    list-style: none;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 .menu-principal li a {
-    font-size: 17px;
-    letter-spacing: 0.5px;
     display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
+    padding: 12px 20px;
+    color: #0056b3;
     text-decoration: none;
+    border-radius: 6px;
     transition: background 0.2s, color 0.2s;
+    font-weight: 500;
 }
 
-.menu-principal li a:hover,
-.menu-principal li a.activo {
+.menu-principal li a:hover {
     background-color: #e6f0ff;
-    color: #0056b3;
+    color: #007bff;
     font-weight: bold;
 }
 
