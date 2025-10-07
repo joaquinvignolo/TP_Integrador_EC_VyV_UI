@@ -2,39 +2,68 @@
 function validarFecha() {
     const inputFecha = document.getElementById('fechaNacimiento').value;
     const errorFecha = document.getElementById('errorFecha');
-    
+    limpiarMensajeFecha();
+
     // Resetear estilo del error
     errorFecha.style.color = '#d93025';
-    
+
     const partes = inputFecha.split('/');
-    
+
     if (partes.length !== 3) {
         errorFecha.textContent = 'El formato debe ser DD/MM/AAAA.';
         return;
     }
-    
+
     const dia = parseInt(partes[0], 10);
     const mes = parseInt(partes[1], 10);
     const año = parseInt(partes[2], 10);
-    
-    // Validaciones más completas
+
     if (isNaN(dia) || isNaN(mes) || isNaN(año)) {
         errorFecha.textContent = 'Los valores deben ser números válidos.';
         return;
     }
-    
+
     if (dia < 1 || dia > 31) {
         errorFecha.textContent = 'El día debe estar entre 1 y 31.';
         return;
     }
-    
+
     if (año < 1900 || año > new Date().getFullYear()) {
         errorFecha.textContent = 'El año debe ser válido.';
         return;
     }
-    
-    errorFecha.textContent = 'Fecha válida.';
-    errorFecha.style.color = 'green';
+
+    errorFecha.textContent = '';
+    mostrarMensajeFecha();
+}
+
+function mostrarMensajeFecha() {
+    let mensaje = document.getElementById('mensajeFecha');
+    if (!mensaje) {
+        mensaje = document.createElement('div');
+        mensaje.id = 'mensajeFecha';
+        mensaje.style.cssText = `
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            border-radius: 4px;
+            padding: 15px;
+            margin: 15px 0 0 0;
+            font-weight: bold;
+            text-align: center;
+            animation: fadeIn 0.5s;
+        `;
+        document.getElementById('formFecha').appendChild(mensaje);
+    }
+    mensaje.innerHTML = `
+        <strong>¡Fecha válida!</strong><br>
+        El formato y los valores de la fecha son correctos.
+    `;
+}
+
+function limpiarMensajeFecha() {
+    const mensaje = document.getElementById('mensajeFecha');
+    if (mensaje) mensaje.remove();
 }
 
 // --- LÓGICA PARA EL ESCENARIO 2 ---
@@ -298,19 +327,49 @@ function limpiarMensajePedido() {
 function validarPassword() {
     const password = document.getElementById('password').value;
     const errorPassword = document.getElementById('errorPassword');
-    
+    limpiarMensajePassword();
+
     // Resetear color
     errorPassword.style.color = '#d93025';
-    
+
     const tieneCaracterEspecial = /[!@#$%^&*(),.?":{}|<>]/.test(password);
-    
+
     if (!tieneCaracterEspecial) {
         errorPassword.textContent = 'La contraseña debe incluir al menos un carácter especial (@, #, $, etc.).';
         return;
     }
-    
-    errorPassword.textContent = '¡Contraseña válida!';
-    errorPassword.style.color = 'green';
+
+    errorPassword.textContent = '';
+    mostrarMensajePassword();
+}
+
+function mostrarMensajePassword() {
+    let mensaje = document.getElementById('mensajePassword');
+    if (!mensaje) {
+        mensaje = document.createElement('div');
+        mensaje.id = 'mensajePassword';
+        mensaje.style.cssText = `
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            border-radius: 4px;
+            padding: 15px;
+            margin: 15px 0 0 0;
+            font-weight: bold;
+            text-align: center;
+            animation: fadeIn 0.5s;
+        `;
+        document.getElementById('formPassword').appendChild(mensaje);
+    }
+    mensaje.innerHTML = `
+        <strong>¡Contraseña válida!</strong><br>
+        Puedes continuar con el registro.
+    `;
+}
+
+function limpiarMensajePassword() {
+    const mensaje = document.getElementById('mensajePassword');
+    if (mensaje) mensaje.remove();
 }
 
 // --- LÓGICA PARA EL ESCENARIO 4 (MENÚ) ---
