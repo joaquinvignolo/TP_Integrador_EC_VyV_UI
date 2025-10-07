@@ -273,63 +273,23 @@ function validarPassword() {
     // Resetear color
     errorPassword.style.color = '#d93025';
     
-    if (password.length < 8) {
-        errorPassword.textContent = 'La contraseña debe tener al menos 8 caracteres.';
-        return;
-    }
-    
     const tieneCaracterEspecial = /[!@#$%^&*(),.?":{}|<>]/.test(password);
-    const tieneMayuscula = /[A-Z]/.test(password);
-    const tieneMinuscula = /[a-z]/.test(password);
-    const tieneNumero = /[0-9]/.test(password);
     
     if (!tieneCaracterEspecial) {
         errorPassword.textContent = 'La contraseña debe incluir al menos un carácter especial (@, #, $, etc.).';
         return;
     }
     
-    if (!tieneMayuscula) {
-        errorPassword.textContent = 'La contraseña debe incluir al menos una letra mayúscula.';
-        return;
-    }
-    
-    if (!tieneMinuscula) {
-        errorPassword.textContent = 'La contraseña debe incluir al menos una letra minúscula.';
-        return;
-    }
-    
-    if (!tieneNumero) {
-        errorPassword.textContent = 'La contraseña debe incluir al menos un número.';
-        return;
-    }
-    
-    errorPassword.textContent = '¡Contraseña válida y segura!';
+    errorPassword.textContent = '¡Contraseña válida!';
     errorPassword.style.color = 'green';
 }
 
 // --- LÓGICA PARA EL ESCENARIO 4 (MENÚ) ---
 document.addEventListener('DOMContentLoaded', function() {
     const menuLinks = document.querySelectorAll('.menu-principal a');
-    
-    // Deshabilitar botón de reinicio al cargar la página
-    const btnReiniciar = document.querySelector('#pantalla3 button[onclick="reiniciarFlujo()"]');
-    if (btnReiniciar) {
-        btnReiniciar.disabled = true;
-    }
-    
     menuLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
-            
-            // Remover clase activa de todos los links
-            menuLinks.forEach(l => l.classList.remove('activo'));
-            
-            // Agregar clase activa al link clickeado
-            this.classList.add('activo');
-            
-            // Simular navegación
-            const texto = this.textContent;
-            alert(`Navegando a: ${texto}`);
         });
     });
 });
