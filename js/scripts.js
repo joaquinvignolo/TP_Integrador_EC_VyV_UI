@@ -165,9 +165,9 @@ function validarCodigo() {
 }
 
 function validarNuevaPassword() {
-    const passwordInput = document.querySelector('#pantalla3 input[type="password"]');
+    const passwordInput = document.getElementById('nuevaPassword');
     const password = passwordInput.value;
-    
+
     // Crear o encontrar elemento de error
     let errorElement = document.getElementById('errorNuevaPassword');
     if (!errorElement) {
@@ -176,47 +176,55 @@ function validarNuevaPassword() {
         errorElement.className = 'mensaje-error';
         passwordInput.parentNode.appendChild(errorElement);
     }
-    
+
+    // SIEMPRE limpiar mensaje de éxito antes de mostrar error
+    const exitoElement = document.getElementById('mensajeExito');
+    if (exitoElement) exitoElement.remove();
+
     if (!password) {
         errorElement.textContent = 'Debe ingresar una nueva contraseña.';
         return false;
     }
-    
+
     if (password.length < 8) {
         errorElement.textContent = 'La contraseña debe tener al menos 8 caracteres.';
         return false;
     }
-    
+
     const tieneCaracterEspecial = /[!@#$%^&*(),.?":{}|<>]/.test(password);
     const tieneMayuscula = /[A-Z]/.test(password);
     const tieneMinuscula = /[a-z]/.test(password);
     const tieneNumero = /[0-9]/.test(password);
-    
+
     if (!tieneCaracterEspecial) {
         errorElement.textContent = 'Debe incluir al menos un carácter especial (@, #, $, etc.).';
         return false;
     }
-    
+
     if (!tieneMayuscula) {
         errorElement.textContent = 'Debe incluir al menos una letra mayúscula.';
         return false;
     }
-    
+
     if (!tieneMinuscula) {
         errorElement.textContent = 'Debe incluir al menos una letra minúscula.';
         return false;
     }
-    
+
     if (!tieneNumero) {
         errorElement.textContent = 'Debe incluir al menos un número.';
         return false;
     }
-    
+
     errorElement.textContent = '';
     return true;
 }
 
 function mostrarMensajeExito() {
+    // Limpiar mensaje de error antes de mostrar éxito
+    const errorElement = document.getElementById('errorNuevaPassword');
+    if (errorElement) errorElement.textContent = '';
+
     // Crear o encontrar elemento de éxito
     let exitoElement = document.getElementById('mensajeExito');
     if (!exitoElement) {

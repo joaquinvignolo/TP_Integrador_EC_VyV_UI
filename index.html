@@ -53,13 +53,16 @@
                     <p class="info-requisitos">
                         La contraseña debe tener al menos 8 caracteres, incluir una letra mayúscula, una letra minúscula, un número y un carácter especial (por ejemplo: @, #, $).
                     </p>
-                    <input type="password" placeholder="Tu nueva contraseña" id="nuevaPassword">
-                    <span class="toggle-password" onclick="togglePassword('nuevaPassword', this)">
-                        <!-- Ojo cerrado por defecto -->
-                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24"><path stroke="#555" stroke-width="2" d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12Z"/><circle cx="12" cy="12" r="3" stroke="#555" stroke-width="2"/></svg>
-                    </span>
+                    <div class="input-password-wrapper">
+                        <input type="password" placeholder="Tu nueva contraseña" id="nuevaPassword">
+                        <span class="toggle-password" onclick="togglePassword('nuevaPassword', this)">
+                            <!-- SVG del ojo -->
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24"><path stroke="#555" stroke-width="2" d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12Z"/><circle cx="12" cy="12" r="3" stroke="#555" stroke-width="2"/></svg>
+                        </span>
+                    </div>
                     <button type="button" onclick="irAPantalla('finalizar')">Finalizar</button>
                     <button type="button" onclick="reiniciarFlujo()" disabled>Reiniciar Proceso</button>
+                    <p id="errorNuevaPassword" class="mensaje-error"></p>
                 </div>
             </div>
         </section>
@@ -99,10 +102,12 @@
             <p>Mostrar un mensaje de error claro cuando la contraseña no cumple los requisitos.</p>
             <form id="formPassword">
                 <label for="password">Contraseña (debe tener un carácter especial como @, #, $):</label>
-                <input type="password" id="password">
-                <span class="toggle-password" onclick="togglePassword('password', this)">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24"><path stroke="#555" stroke-width="2" d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12Z"/><circle cx="12" cy="12" r="3" stroke="#555" stroke-width="2"/></svg>
-                </span>
+                <div class="input-password-wrapper">
+                    <input type="password" id="password">
+                    <span class="toggle-password" onclick="togglePassword('password', this)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24"><path stroke="#555" stroke-width="2" d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12Z"/><circle cx="12" cy="12" r="3" stroke="#555" stroke-width="2"/></svg>
+                    </span>
+                </div>
                 <button type="button" onclick="validarPassword()">Registrarse</button>
                 <p id="errorPassword" class="mensaje-error"></p>
             </form>
