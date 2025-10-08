@@ -89,7 +89,13 @@ button:disabled {
     cursor: not-allowed;
 }
 
-.mensaje-error,
+.mensaje-error {
+    color: #d93025;
+    font-weight: 500;
+    margin-top: 8px;
+    margin-bottom: 0;
+}
+
 #mensajeExito {
     animation: fadeIn 0.5s;
 }
@@ -157,6 +163,20 @@ form {
     padding: 18px 20px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.04);
     margin-bottom: 18px;
+}
+
+.toggle-password {
+    cursor: pointer;
+    margin-left: -30px;
+    position: relative;
+    z-index: 2;
+    vertical-align: middle;
+    user-select: none;
+    display: inline-block;
+}
+
+input[type="password"], input[type="text"] {
+    vertical-align: middle;
 }
 
 @keyframes fadeInSection {
